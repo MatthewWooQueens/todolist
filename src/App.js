@@ -11,7 +11,7 @@ const App = () => {
   function TodoItem (item){
     return(
       <div className = "container">
-        <p>{item.test}</p>
+        <text className = "textblock">{item.test}</text>
         <button className = "remove"
           onClick={function(){
             //slist.splice(slist.indexOf(item.test),1);
@@ -32,41 +32,43 @@ const App = () => {
   return (
   <div className = "App">
     <div className = "App-header">
-      <h1>Hi</h1>
-      <input className = "task"
-        value = {search1}
-        onChange = {(e)=>setSearch(e.target.value)}
-      />
-      {search1?.length > 0?(
-        <button className = "taskButton"
-          onClick = {function() {
-            if (!slist.includes(search1)){
-              slist.push(search1);
-              
-              console.log(slist);
-            }else{
-              console.log("already exists");
-            }
-            setSearch("");
-          }}
-        >
-        Add
-        </button>
-      ):(
-        <button className = "taskButton"
-          onClick = {function() {
-          <p>Type something in</p>
-          console.log("No text");
-          }}
-        >
-        Add
-        </button>
-      )}
-    </div>
-    <div>
-      {slist.map((item)=>
-        <TodoItem test={item}/>
-      )}
+      <h1>Todo list</h1>
+      <div className = "container">
+        <input className = "task"
+          value = {search1}
+          onChange = {(e)=>setSearch(e.target.value)}
+        />
+        {search1?.length > 0?(
+          <button className = "taskButton"
+            onClick = {function() {
+              if (!slist.includes(search1)){
+                slist.push(search1);
+                
+                console.log(slist);
+              }else{
+                console.log("already exists");
+              }
+              setSearch("");
+            }}
+          >
+          Add
+          </button>
+        ):(
+          <button className = "taskButton"
+            onClick = {function() {
+            <p>Type something in</p>
+            console.log("No text");
+            }}
+          >
+          Add
+          </button>
+        )}
+      </div>
+      <div className = "taskcontainer">
+          {slist.map((item)=>
+            <TodoItem test={item}/>
+          )}
+      </div>
     </div>
   </div>
   );
