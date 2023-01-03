@@ -7,8 +7,6 @@ const App = () => {
   const [search1,setSearch] = useState("");
   const [slist,setList] = useState([]);
   const [historyList, setHistory] = useState([]);
-  console.log("Miserable trash: "+ historyList);
-  console.log("Stuff trasy: " + slist);
   useEffect(() =>{})
 
   var modal = document.getElementById("myModal");
@@ -20,8 +18,6 @@ const App = () => {
         <text className = "textblock">{temp}</text>
         <button className = "remove"
           onClick={function(){
-            //slist.splice(slist.indexOf(item.test),1);
-            //console.log(slist);
             setList(slist.filter(task => task != temp));
           }}
         >
@@ -29,8 +25,6 @@ const App = () => {
         </button>
         <button className = "doneBtn"
           onClick={function(){
-            console.log("Crap: " + historyList);
-            console.log("Stuff: " + slist);
             setHistory(historyList.slice().concat(temp)); //["trash","crap","noInts"]
             setList(slist.filter(task => task != item.test));
           }}>
@@ -45,10 +39,6 @@ const App = () => {
       <text>{item.value}</text>
     );
   }
-
-  //const addTask = () => {
-  //  setList([...slist, {}])
-  //}
 
   return (
   <div className = "App">
@@ -65,10 +55,6 @@ const App = () => {
             onClick = {function() {
               if (!slist.includes(search1)){
                 slist.push(search1);
-                
-                console.log(slist);
-              }else{
-                console.log("already exists");
               }
               setSearch("");
             }}
@@ -79,7 +65,6 @@ const App = () => {
           <button className = "taskButton"
             onClick = {function() {
             <p>Type something in</p>
-            console.log("No text");
             }}
           >
           Add
@@ -106,7 +91,6 @@ const App = () => {
       </div>
     </div>
     <div id="myModal" className = "modal">
-      {console.log(historyList)}
       <div className = "modalContainer">
         <span class = "closebtn" onClick={function(){
             modal.style.display = "none";
@@ -121,8 +105,7 @@ const App = () => {
 
         </div>
       </div>
-      </div>
-
+    </div>
   </div>
   );
 }
